@@ -1,0 +1,13 @@
+# RearView: Two-Stage Efficient Malicious Traffic Identification with Dynamic Relationship Awareness #
+
+## Abstract ##
+
+Stealthy network attacks increasingly evade detection by mimicking the feature distributions of benign traffic, rendering traditional point-based analysis ineffective. Although Graph Neural Networks (GNNs) possess the capability to capture relational dependencies, their indiscriminate aggregation mechanism often induces relational smearing, which sequentially leads to feature smearing that blurs the structural boundaries between legitimate flows and adversarial noise. This paper proposes Atomic-Anchor, an unsupervised framework that identifies anomalies by exploiting a fundamental structural dichotomy inherent in network topology. We observe that benign traffic naturally manifests as atomized micro-communities within specific business contexts, characterized by weak internal correlations and sparse external coupling. In contrast, coordinated malicious activities form highly cohesive aggregates due to their collaborative nature, with flows tightly coupled through functional or causal dependencies. To leverage this divergence, Atomic-Anchor introduces a community-driven GNN architecture that employs isolation masking to ensure structural purity and prevent cross-community information contamination. Furthermore, we design a dual-granularity optimization strategy that preserves intra-community diversity while driving benign representations toward stable atomic anchors in a latent manifold. Theoretical analysis and extensive experiments on 36 collaborative attack types show that Atomic-Anchor effectively amplifies structural divergence between legitimate atoms and malicious clusters. It achieves an F1-score of 98.3% and outperforms SOTA baselines by a relative average of 21.4%, establishing a robust geometric baseline for detecting sophisticated, coordinated threats.
+
+## Framework ##
+
+![PDF 内容截图](/image/framework.png)
+
+### Overview ###
+
+RearView covers four core modules. **Preprocessing** module transforms raw bidirectional flows into model-compatible features via 5-tuple grouping, excluding payloads to work for encrypted traffic. **Conditional Single-Flow Screening** module uses triplet-specific VAEs and KDE to calculate anomaly probabilities for preliminary filtering. **Relationship-Aware Refinement** module maintains a FIFO queue, builds directed session graphs, and leverages anomaly-weighted GraphSAGE-DGI to generate refined edge embeddings. **Anomaly Detection** module uses unsupervised classifiers on normal traffic embeddings, integrates VAE anomaly priors, and outputs binary labels, detecting single-flow and relational anomalies. 
