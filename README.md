@@ -1,4 +1,4 @@
-# RearView: Two-Stage Efficient Malicious Traffic Identification with Dynamic Relationship Awareness #
+# Atomic-Anchor: Leveraging Structural Divergence via Community-Driven Graph Neural Networks for Robust Traffic Anomaly Detection #
 
 ## Abstract ##
 
