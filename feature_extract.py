@@ -224,7 +224,7 @@ if __name__ == "__main__":
 
     single_category_path = extract_single_category_to_pkl(
 
-        category_dir=f"/data/fp/TrafficScope-modified/middleResults/pcap_data/unsw/reconnaissance_sessions",
+        category_dir=f"/unsw/reconnaissance_sessions",
         label=1,
         save_pkl_dir="data/unsw/",
         num_processes=64
