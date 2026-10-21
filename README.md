@@ -53,8 +53,40 @@ data/cicids2017/<attack>.pkl
 # standard end-to-end run (train if no checkpoint, then detect)
 python run_evt.py --dataset <name> --attack <attack_pkl> --sgv
 
-
 ```
 
 Run `python run_evt.py --help` for the full parameter list (threshold
 calibration, ablation switches, SGV options, seeds).
+
+## Key References
+
+- **Y. Mirsky, T. Doitshman, Y. Elovici, and A. Shabtai,** "Kitsune: An
+  ensemble of autoencoders for online network intrusion detection,"
+  *NDSS*, 2018. — online-detector baseline.
+- **Z. Zhao et al.**, "Trident: A universal framework for fine-grained and
+  class-incremental unknown traffic detection," *WWW*, 2024, pp. 1608–1619.
+  — fine-grained traffic-detection baseline.
+- **W. Zheng et al.**, "Learning to classify: A flow-based relation network
+  for encrypted traffic classification," *WWW*, 2020, pp. 13–22. —
+  flow-relation modeling; source of the evaluation-metric protocol.
+- **A. Siffer, P.-A. Fouque, A. Termier, and C. Largouët,** "Anomaly
+  detection in streams with extreme value theory," *KDD*, 2017,
+  pp. 1067–1075. — EVT/POT thresholding (Channel A).
+- **V. D. Blondel, J.-L. Guillaume, R. Lambiotte, and E. Lefebvre,** "Fast
+  unfolding of communities in large networks," *J. Stat. Mech.: Theory and
+  Experiment*, vol. 2008, no. 10, P10008, 2008. — Louvain community
+  detection (CDAP Stage 1).
+- **W. Hamilton, Z. Ying, and J. Leskovec,** "Inductive representation
+  learning on large graphs," *NeurIPS*, vol. 30, 2017. — GNN aggregation
+  backbone.
+- **P. Veličković et al.**, "Deep graph infomax," *ICLR*, 2019. —
+  contrastive representation learning.
+- **C. Torrence and G. P. Compo,** "A practical guide to wavelet analysis,"
+  *Bull. Am. Meteorol. Soc.*, vol. 79, no. 1, pp. 61–78, 1998. — wavelet
+  analysis (Strategy B semantic edges).
+- **Canadian Institute for Cybersecurity,** "Intrusion Detection Evaluation
+  Dataset (CICIDS2017)," 2018.
+  [dataset](https://www.unb.ca/cic/datasets/ids-2017.html)
+- **Canadian Institute for Cybersecurity,** "Intrusion Detection Evaluation
+  Dataset (ISCX Botnet 2014)," 2014.
+  [dataset](https://www.unb.ca/cic/datasets/ids-2017.html)
