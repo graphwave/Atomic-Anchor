@@ -583,9 +583,9 @@ def main():
 
     _DATASET_EVT_PARAMS = {
         'botnet2014': (0.975, 0.002),
-        'ids2017':    (0.99,  0.0005),
-        'unsw':       (0.975, 0.001),
-        'ustc':       (0.975, 0.0003),
+        'ids2017':    (0.975,  0.002),
+        'unsw':       (0.975, 0.002),
+        'ustc':       (0.975, 0.002),
     }
     initial_q, q_risk = _DATASET_EVT_PARAMS.get(dataset, (0.975, 0.002))
 
