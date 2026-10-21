@@ -217,46 +217,6 @@ def main():
 
     benign_data = read_pkl_file(benign_pkl_path)
     attack_data = read_pkl_file(attack_pkl_path)
-    if args.no_filter:
-        print('[no_filter] skipping all dataset/attack filtering, using raw unfiltered data')
-    elif (dataset == 'ids2017'):
-        benign_data_filtered = [item for item in benign_data if item['meta']['src'] != '172.16.0.1' \
-            and item['meta']['dst'] != '172.16.0.1']
-        benign_data = benign_data_filtered
-    elif (dataset == 'unsw'):
-        benign_data_filtered = [item for item in benign_data if '59.166.0' in item['meta']['src'] \
-            or '59.166.0' in item['meta']['dst']]
-        benign_data = benign_data_filtered
-    elif (dataset == 'botnet2014'):
-        benign_data_filtered = [item for item in benign_data if '192.168.' in item['meta']['src'] \
-            or '192.168.0' in item['meta']['dst']]
-        if ('RBot' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '3389' in item['meta']['file_id']]
-            attack_data = attack_data_filtered
-        if ('Virut' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '147-32-84-160' in item['meta']['file_id']\
-                                    and '212-117-171-138' in item['meta']['file_id']]
-            attack_data = attack_data_filtered
-        if ('Murlo' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '147-32-84-130' in item['meta']['file_id']\
-                                    and '222-189-228-111' in item['meta']['file_id']]
-            attack_data = attack_data_filtered
-        if ('Neris' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '147-32-84-180' in item['meta']['file_id']\
-                                    and '217-163-21-' in item['meta']['file_id']]    
-            attack_data = attack_data_filtered
-        if ('Zeus' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '172-29-0-116' in item['meta']['file_id']]    
-            attack_data = attack_data_filtered
-        if ('IRC' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '192-168-5-122_80' in item['meta']['file_id']]    
-            attack_data = attack_data_filtered
-            benign_data_filtered = [item for item in benign_data if item['meta']['src'] != '192.168.5.122' \
-            and item['meta']['dst'] != '192.168.5.122']
-        if ('Weasel' in attack_pkl_name):
-            attack_data_filtered = [item for item in attack_data if '158-65-110-24_80' in item['meta']['file_id']]    
-            attack_data = attack_data_filtered
-        benign_data = benign_data_filtered
 
     processed_data.extend(benign_data)
     processed_data.extend(attack_data)
