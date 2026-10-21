@@ -1,7 +1,5 @@
 # Atomic-Anchor
 
-Reference implementation of the detection pipeline studied in our paper.
-
 <p align="center">
   <img src="fig/framework.png" alt="The design of Atomic-Anchor: dual-strategy graph construction, community-driven partitioning, A2GNN encoding, and dual-channel anomaly detection." width="900">
 </p>
@@ -24,10 +22,7 @@ Stealthy network attacks increasingly evade detection by mimicking the feature d
    distances; Channel B: semantic-group verification (SGV) with OR fusion
    (`run_evt.py`).
 
-Robustness evaluations (evasion / injection / label-smear adversaries, with
-per-perturbation semantic invariants) live in `robustness.py` /
-`run_robustness.py`; the efficiency benchmark in
-`benchmark_efficiency_repeat.py`.
+
 
 ## Layout
 
@@ -37,9 +32,6 @@ graph_builder.py              dual-strategy graphs + CDAP partitioning
 hcg_model.py                  A2GNN model
 train.py                      training loop
 run_evt.py                    end-to-end training + dual-channel detection
-robustness.py                 test-time perturbations + invariants
-run_robustness.py             robustness experiment driver
-benchmark_efficiency_repeat.py  per-flow latency benchmark (repeated runs)
 ```
 
 ## Requirements
@@ -59,16 +51,9 @@ data/cicids2017/<attack>.pkl
 
 ```bash
 # standard end-to-end run (train if no checkpoint, then detect)
-python run_evt.py --dataset <name> --attack <attack_pkl>
-
-# SGV second channel on top of the std pipeline
 python run_evt.py --dataset <name> --attack <attack_pkl> --sgv
 
-# robustness experiments (test-time perturbations only)
-python run_robustness.py --attacks <attack> --strengths all
 
-# efficiency benchmark
-python benchmark_efficiency_repeat.py
 ```
 
 Run `python run_evt.py --help` for the full parameter list (threshold
